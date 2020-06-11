@@ -17,7 +17,7 @@ class Api::V1::PhotosController < ApplicationController
 
   def update
     @photo.update(photo_params)
-    render json: @photo if @photo.valid?
+    return render json: @photo if @photo.valid?
 
     render json: { errors: @photo.errors.full_messages }
   end

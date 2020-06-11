@@ -4,8 +4,8 @@ class Api::V1::CommentsController < ApplicationController
   def show; end
 
   def create
-    @comment = Comment.create(comment_paramas)
-    render json: @comment if @comment.valid?
+    @comment = Comment.create(comment_params)
+    return render json: @comment if @comment.valid?
 
     render json: { errors: @comment.errors.full_messages }
   end
@@ -16,7 +16,7 @@ class Api::V1::CommentsController < ApplicationController
 
   private
 
-  def comment_paramas
-    params(:content, :owner, :photo_id)
+  def comment_params
+    params.permit(:content, :owner, :photo_id)
   end
 end
