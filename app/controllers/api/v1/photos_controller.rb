@@ -30,7 +30,7 @@ class Api::V1::PhotosController < ApplicationController
   private
 
   def photo_params
-    params.permit(:title, :photo_url_string)
+    params.permit(:title, :photo_url)
   end
 
   def set_photo
